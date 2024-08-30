@@ -1,7 +1,7 @@
 {
   "scripts": {
     "prepare": "husky",
-    "install:all": "npm i && npm i --prefix backend && npm i --prefix backend/users" 
+    "install:all": "npm i && cd backend && npm run install:all" 
   },
   "devDependencies": {
     "@commitlint/cli": "^19.4.1",

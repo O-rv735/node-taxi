@@ -1,0 +1,32 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: postgres
+    restart: always 
+    ports:
+      - ${POSTGRES_PORT}:5432
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=${POSTGRES_DB}
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
+      interval: 10s
+      retries: 5
+      start_period: 30s
+      timeout: 10s
+
+  users:
+    container_name: users_service 
+    build: 
+      context: ./backend/users
+    env_file:
+      - ./.env
+    volumes:
+      - ./backend/users/src:/app/src
+    ports:
+      - ${USERS_SERVICE_PORT}:${USERS_SERVICE_PORT}
+    depends_on:
+      postgres:
+        condition: service_healthy
+        restart: true

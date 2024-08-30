@@ -8,7 +8,7 @@ async function bootstrap() {
   app.setGlobalPrefix('api');
 
   const configService = app.get(ConfigService);
-  const port = configService.get('APP_PORT');
+  const port = configService.get('USERS_SERVICE_PORT');
 
   await app.listen(port, () => {
     console.log(`Application is running on ${port} port`);

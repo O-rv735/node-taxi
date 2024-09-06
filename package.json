@@ -5,6 +5,10 @@
     "format:all": "cd backend && npm run format:all",
     "lint:all": "cd backend && npm run lint:all"
   },
+  "engines": {
+    "node": ">=22.8.0",
+    "npm": ">=10.8.2"
+  },
   "devDependencies": {
     "@commitlint/cli": "^19.4.1",
     "@commitlint/config-conventional": "^19.4.1",

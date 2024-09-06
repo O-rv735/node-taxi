@@ -1,6 +1,6 @@
 import { HttpAdapterHost, NestFactory } from '@nestjs/core';
-import { AppModule } from './app.module';
 import { ConfigService } from '@nestjs/config';
+import { AppModule } from './app.module';
 import { PrismaClientExceptionFilter } from './prisma/prisma-client-exeption.filter';
 
 async function bootstrap() {

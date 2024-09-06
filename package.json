@@ -1,7 +1,10 @@
 {
   "scripts": {
     "prepare": "husky",
-    "install:all": "npm i && cd backend && npm run install:all" 
+    "install:all": "npm i && cd backend && npm run install:all",
+    "test": "cd backend/users && npm run test",
+    "test:e2e": "./scripts/users-service-e2e.sh",
+    "gen:env": "./scripts/generate-env.sh"
   },
   "devDependencies": {
     "@commitlint/cli": "^19.4.1",

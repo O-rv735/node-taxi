@@ -40,9 +40,14 @@ Stop only one service
 docker compose stop users 
 ```
 
+Rebuild image
+```bash
+docker compose build users
+```
+
 Rebuild image before run with --build option
 ```bash
-docker compose up user service --build -d
+docker compose up users --build -d
 ```
 
 ### Unit test

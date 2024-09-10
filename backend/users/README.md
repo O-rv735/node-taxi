@@ -1,23 +1,29 @@
 # User service
 
 ## Installation
+[Install docker on you machine](`https://docs.docker.com/engine/install/`)
 
 Install dependencies
 ```bash
 npm install
 ```
+To generate Prisma types before first run or after update `prisma.schema` file run
+```bash
+npx prisma generate
+```
 
-## Running the app
+## Running the app locally
 
 ```bash
-# development
-$ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
+npm run start
+```
+watch mode
+```bash
+npm run start:dev
+```
+production mode
+```bash
+npm run start:prod
 ```
 
 ## Test

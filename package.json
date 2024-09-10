@@ -2,6 +2,9 @@
   "scripts": {
     "prepare": "husky",
     "install:all": "npm i && cd backend && npm run install:all",
+    "test": "cd backend/users && npm run test",
+    "test:e2e": "./scripts/users-service-e2e.sh",
+    "gen:env": "./scripts/generate-env.sh",
     "format:all": "cd backend && npm run format:all",
     "lint:all": "cd backend && npm run lint:all"
   },

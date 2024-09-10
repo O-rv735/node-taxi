@@ -3,9 +3,10 @@
   "version": "1.0.0",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "install:all": "npm i && npm i --prefix users",
+    "install:all": "npm i && (cd users && npm i)",
     "format:all": "npm run --prefix users format:check",
-    "lint:all": "npm run --prefix users lint:check"
+    "lint:all": "npm run --prefix users lint:check",
+    "postinstall": "cd users && npx prisma generate"
   },
   "engines": {
     "node": ">=22.8.0",

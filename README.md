@@ -6,9 +6,13 @@ To install all dependencies run
 npm run install:all
 ```
 
-Put content of env.example in .env and update credential as needed
+Generate .env files with command
 ```bash
-cat env.example > .env
+npm run gen:env
+```
+if comand fails run command below and then repeat previous command
+```bash
+chmod +x ./scripts/generate-env.sh
 ```
 
 ## Running the app in docker
@@ -36,7 +40,31 @@ Stop only one service
 docker compose stop users 
 ```
 
+Rebuild image
+```bash
+docker compose build users
+```
+
 Rebuild image before run with --build option
 ```bash
-docker compose up user service --build -d
+docker compose up users --build -d
 ```
+
+### Unit test
+Run unit tests
+
+```bash
+docker compose run service_name npm run test
+```
+
+### e2e test
+To run e2e test execute command below
+```bash
+npm run test:e2e
+```
+if comand fails run command below and then repeat previous command
+```bash
+chmod +x ./scripts/users-service-e2e.sh
+```
+
+

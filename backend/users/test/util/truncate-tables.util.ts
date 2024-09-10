@@ -16,7 +16,7 @@ async function truncateTables() {
   try {
     await prisma.$executeRawUnsafe(`TRUNCATE TABLE ${tables} CASCADE;`);
   } catch (error) {
-    console.log({ error });
+    console.log({ truncateTableError: error });
   } finally {
     prisma.$disconnect();
   }

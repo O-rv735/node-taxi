@@ -6,8 +6,14 @@ export const validationSchema = Joi.object({
     .default('development'),
 
   // ### USERS MICROSERVICE CONFIG
-  USERS_SERVICE_PORT: Joi.number().port().default(4000),
-  BCRYPT_SALT_ROUNDS: Joi.number().integer().min(4).max(20).default(10),
+  USERS_SERVICE_PORT: Joi.number()
+    .port()
+    .default(4000),
+  BCRYPT_SALT_ROUNDS: Joi.number()
+    .integer()
+    .min(4)
+    .max(20)
+    .default(10),
 
   // ### USERS_PRISMA_DB_URL config
   POSTGRES_USER: Joi.string().min(3).max(30),

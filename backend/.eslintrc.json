@@ -9,17 +9,28 @@
   ],
   "extends": [
     "airbnb-base",
-    "airbnb-typescript/base",
-    "prettier"
+    "airbnb-typescript/base"
   ],
   "overrides": [],
   "parserOptions": {
     "ecmaVersion": "latest",
     "sourceType": "module",
-    "project": "./tsconfig.json"
+    "project": "backend/tsconfig.base.json"
   },
   "rules": {
     "import/prefer-default-export": "off",
+    "@typescript-eslint/indent": "off",
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": [
+          "**/*.test.ts",
+          "**/*.spec.ts",
+          "**/*.e2e.ts",
+          "**/*.e2e-spec.ts"
+        ]
+      }
+    ],
     "jest/no-disabled-tests": "warn",
     "jest/no-focused-tests": "error",
     "jest/no-identical-title": "error",

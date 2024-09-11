@@ -1,5 +1,7 @@
 import { User, Role } from '@prisma/client';
-import { IsEmail, IsEnum, IsString, Length } from 'class-validator';
+import {
+  IsEmail, IsEnum, IsString, Length,
+} from 'class-validator';
 
 export class CreateUserDto implements Omit<User, 'id'> {
   @Length(2, 100)

@@ -6,7 +6,7 @@ To install all dependencies run
 npm run install:all
 ```
 
-Generate .env files with command
+Generate .env files with command for macOS and Linux
 ```bash
 npm run gen:env
 ```
@@ -14,6 +14,11 @@ if comand fails run command below and then repeat previous command
 ```bash
 chmod +x ./scripts/generate-env.sh
 ```
+for Windows guys: use git bash to run this script
+or copy content of ./env.example and put it to ./.env file.
+Update variables in newly created .env file.
+Repeat this operations for ./prod and ./test directories.
+
 
 ## Running the app in docker
 Run all services

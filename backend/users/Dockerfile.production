@@ -1,0 +1,32 @@
+FROM node:22-alpine as build
+
+WORKDIR /app
+
+COPY package*.json .
+
+RUN npm install
+
+COPY . .
+
+RUN npx prisma generate
+
+RUN npm run build 
+
+
+FROM node:22-alpine as prod 
+
+WORKDIR /app
+
+COPY package*.json .
+
+RUN npm install --production
+
+COPY --from=build /app/dist ./dist
+COPY --from=build /app/src/prisma/schema.prisma ./prisma/schema.prisma
+COPY --from=build /app/src/prisma/migrations ./prisma/migrations
+
+RUN npm pkg delete prisma
+
+RUN npx prisma generate
+
+CMD npx prisma migrate deploy && node ./dist/src/main.js 

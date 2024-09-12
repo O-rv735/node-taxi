@@ -33,7 +33,7 @@ function generateEnvFile() {
     -e "s#USERS_PRISMA_DB_URL=.*#USERS_PRISMA_DB_URL=${USERS_PRISMA_DB_URL}#g" \
     "$DOT_ENV_FILE"
 
-  # Get return code of last co
+  # Get return code of last command
   RC=$?
 
   # Check if last command was cuccess, if yes remove .env.bak file
@@ -47,9 +47,14 @@ DEV_ENV_EXAMPLE="./env.example"
 DEV_DOT_ENV="./.env"
 
 # Path defenition for test env
-TEST_ENV_EXAMPLE="./test.env.example"
+TEST_ENV_EXAMPLE="./test/test.env.example"
 TEST_DOT_ENV="./test/.env"
+
+# Path defenition for test env
+PROD_ENV_EXAMPLE="./prod/prod.env.example"
+PROD_DOT_ENV="./prod/.env"
 
 # Call generate env file for dev and test environment
 generateEnvFile "$DEV_ENV_EXAMPLE" "$DEV_DOT_ENV"
 generateEnvFile "$TEST_ENV_EXAMPLE" "$TEST_DOT_ENV"
+generateEnvFile "$PROD_ENV_EXAMPLE" "$PROD_DOT_ENV"

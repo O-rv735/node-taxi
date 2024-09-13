@@ -4,7 +4,7 @@
     "install:all": "npm i && cd backend && npm run install:all",
     "test": "npm run test --prefix backend/users",
     "test:e2e": "./scripts/users-service-e2e.sh",
-    "start:dev": "docker compose -f ./env-dev/docker-compose.yml up -d",
+    "start:dev": "docker compose -f ./env-dev/docker-compose.yml up",
     "start:prod": "docker compose -f ./env-prod/docker-compose.yml up -d",
     "stop:dev": "docker compose -f ./env-dev/docker-compose.yml down",
     "stop:prod": "docker compose -f ./env-prod/docker-compose.yml down",

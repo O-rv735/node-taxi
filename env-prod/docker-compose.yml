@@ -20,7 +20,7 @@ services:
   users:
     container_name: prod_users 
     build: 
-      dockerfile: ./Dockerfile.production
+      dockerfile: ./docker/Dockerfile.production
       context: ../backend/users
       target: prod
     env_file:

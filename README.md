@@ -41,7 +41,7 @@ or
 npm run stop:dev
 ```
 
-### Running with docker docker compose commands
+### Running with docker compose commands
 Run all services
 ```bash
 docker compose -f /env-dev/docker-compose.yml up

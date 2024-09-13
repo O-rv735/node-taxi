@@ -6,7 +6,7 @@
     "test:e2e": "./scripts/users-service-e2e.sh",
     "start:dev": "docker compose -f ./env-dev/docker-compose.yml up",
     "start:prod": "docker compose -f ./env-prod/docker-compose.yml up -d --build",
-    "build:images": "docker compose -f ./env-prod/docker-compose.yml build",
+    "build:images:prod": "docker compose -f ./env-prod/docker-compose.yml build",
     "stop:dev": "docker compose -f ./env-dev/docker-compose.yml down",
     "stop:prod": "docker compose -f ./env-prod/docker-compose.yml down",
     "gen:env": "./scripts/generate-env.sh",

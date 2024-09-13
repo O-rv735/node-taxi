@@ -41,6 +41,11 @@ or
 npm run stop:dev
 ```
 
+### Build docker image
+```bash
+npm run build:images:prod
+```
+
 ### Running with docker compose commands
 Run all services
 ```bash

@@ -4,7 +4,7 @@ WORKDIR /app
 
 COPY package*.json .
 
-RUN npm install
+RUN npm ci
 
 COPY . .
 
@@ -19,7 +19,7 @@ WORKDIR /app
 
 COPY package*.json .
 
-RUN npm install --production
+RUN npm ci --production
 
 COPY --from=build /app/dist ./dist
 COPY --from=build /app/src/prisma/schema.prisma ./prisma/schema.prisma

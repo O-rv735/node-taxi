@@ -1,7 +1,7 @@
 services:
-  postgres:
+  devpostgres:
     image: postgres:16-alpine
-    container_name: postgres
+    container_name: dev_postgres
     restart: always 
     ports:
       - ${POSTGRES_PORT}:5432
@@ -19,15 +19,15 @@ services:
   users:
     container_name: users_service 
     build: 
-      context: ./backend/users
+      context: ../backend/users
     env_file:
       - ./.env
     volumes:
-      - ./backend/users/src:/app/src
-      - ./backend/users/test:/app/test
+      - ../backend/users/src:/app/src
+      - ../backend/users/test:/app/test
     ports:
       - ${USERS_SERVICE_PORT}:${USERS_SERVICE_PORT}
     depends_on:
-      postgres:
+      devpostgres:
         condition: service_healthy
         restart: true

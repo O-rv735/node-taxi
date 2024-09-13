@@ -44,7 +44,7 @@ function generateEnvFile() {
   echo "File $DOT_ENV_FILE generated succesfully!"
 }
 
-# Array of prefixes for directories and evn example files
+# Array of prefixes for directories and env.example files
 declare -a ENV_PREFIXES=("dev" "test" "prod")
 
 # Iteration over each prefix and call generation of .env for each directory

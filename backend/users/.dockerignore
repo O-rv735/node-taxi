@@ -1,0 +1,12 @@
+dist
+node_modules
+
+README.md
+
+.eslintrc.json
+.prettierrc
+.gitignore
+.env
+
+Dockerfile
+Docerfile.production

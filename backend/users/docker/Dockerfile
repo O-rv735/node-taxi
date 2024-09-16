@@ -1,4 +1,4 @@
-FROM node:20-alpine as development
+FROM node:22-alpine as development
 
 WORKDIR /app
 
@@ -11,4 +11,3 @@ COPY . .
 RUN npx prisma generate
 
 CMD npx prisma migrate dev && npm run start:dev
-

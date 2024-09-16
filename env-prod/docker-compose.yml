@@ -1,7 +1,7 @@
 services:
-  testpostgres:
+  prodpostgres:
     image: postgres:16-alpine
-    container_name: test_postgres
+    container_name: prod_postgres 
     restart: always 
     environment:
       - POSTGRES_USER=${POSTGRES_USER}
@@ -17,23 +17,17 @@ services:
       start_period: 30s
       timeout: 10s
 
-  testusers:
-    container_name: test_users_service 
-    command: >
-        sh -c "
-        npx prisma migrate dev &&
-        npm run test:e2e"
-
+  users:
+    container_name: prod_users 
     build: 
+      dockerfile: ./docker/Dockerfile.production
       context: ../backend/users
+      target: prod
     env_file:
       - ./.env
-    volumes:
-      - ../backend/users/src:/app/src
-      - ../backend/users/test:/app/test
     ports:
       - ${USERS_SERVICE_PORT}:${USERS_SERVICE_PORT}
     depends_on:
-      testpostgres:
+      prodpostgres:
         condition: service_healthy
         restart: true

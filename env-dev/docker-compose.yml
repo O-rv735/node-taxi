@@ -1,0 +1,35 @@
+services:
+  devpostgres:
+    image: postgres:16-alpine
+    container_name: dev_postgres
+    restart: always 
+    ports:
+      - ${POSTGRES_PORT}:5432
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=${POSTGRES_DB}
+      - PGPORT=${POSTGRES_PORT}
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
+      interval: 10s
+      retries: 5
+      start_period: 30s
+      timeout: 10s
+
+  users:
+    container_name: users_service 
+    build: 
+      context: ../backend/users
+      dockerfile: ./docker/Dockerfile
+    env_file:
+      - ./.env
+    volumes:
+      - ../backend/users/src:/app/src
+      - ../backend/users/test:/app/test
+    ports:
+      - ${USERS_SERVICE_PORT}:${USERS_SERVICE_PORT}
+    depends_on:
+      devpostgres:
+        condition: service_healthy
+        restart: true

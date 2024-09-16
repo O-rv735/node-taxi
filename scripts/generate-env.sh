@@ -9,8 +9,8 @@ function generatePasword() {
 }
 
 # This function did all magic. Accept two parameters
-# $1 = env example path
-# $2 = destination for .env file
+# $1 = ./path/to/env.example path
+# $2 = ./path/to/.env file
 function generateEnvFile() {
   ENV_EXAMPLE=$1 
   DOT_ENV_FILE=$2;
@@ -33,23 +33,21 @@ function generateEnvFile() {
     -e "s#USERS_PRISMA_DB_URL=.*#USERS_PRISMA_DB_URL=${USERS_PRISMA_DB_URL}#g" \
     "$DOT_ENV_FILE"
 
-  # Get return code of last co
+  # Get return code of last command
   RC=$?
 
   # Check if last command was cuccess, if yes remove .env.bak file
   if [ $RC -eq 0 ]; then
     rm "$DOT_ENV_FILE.bak" 
   fi
+
+  echo "File $DOT_ENV_FILE generated succesfully!"
 }
 
-# Path defenition for development env
-DEV_ENV_EXAMPLE="./env.example"
-DEV_DOT_ENV="./.env"
+# Array of prefixes for directories and env.example files
+declare -a ENV_PREFIXES=("dev" "test" "prod")
 
-# Path defenition for test env
-TEST_ENV_EXAMPLE="./test.env.example"
-TEST_DOT_ENV="./test/.env"
-
-# Call generate env file for dev and test environment
-generateEnvFile "$DEV_ENV_EXAMPLE" "$DEV_DOT_ENV"
-generateEnvFile "$TEST_ENV_EXAMPLE" "$TEST_DOT_ENV"
+# Iteration over each prefix and call generation of .env for each directory
+for prefix in "${ENV_PREFIXES[@]}"; do
+  generateEnvFile "./env-$prefix/$prefix.env.example"  "./env-$prefix/.env"
+done

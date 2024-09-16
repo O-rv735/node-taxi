@@ -5,7 +5,7 @@
 
 Install dependencies
 ```bash
-npm install
+npm ci
 ```
 To generate Prisma types before first run or after update `prisma.schema` file run
 ```bash
